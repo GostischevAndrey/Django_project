@@ -11,7 +11,8 @@
                 </div>
                 <div class="card-body text-center">
                     {% if product.image %}
-                    <img src="{{ product.image.url }}" class="img-fluid mb-4" style="max-height: 400px;" alt="{{ product.name }}">
+                    <img src="{{ product.image.url }}" class="img-fluid mb-4" style="max-height: 400px;"
+                         alt="{{ product.name }}">
                     {% else %}
                     <div class="bg-light p-5 mb-4 text-muted rounded">
                         Изображение отсутствует
@@ -42,7 +43,6 @@
                             <p class="fw-bold">{{ product.updated_at|date:"d.m.Y H:i" }}</p>
                         </div>
                     </div>
-
                     <div class="d-grid gap-2">
                         <a href="{% url 'catalog:catalog' %}" class="btn btn-outline-secondary">
                             ← Назад в каталог
