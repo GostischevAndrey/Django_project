@@ -25,10 +25,12 @@ class Product(models.Model):
         verbose_name="Наименование продукта",
         help_text="Введите наименование продукта",
     )
-    descriptions = models.TextField(
+    description = models.TextField(
         verbose_name="Описание продукта", help_text="Введите описание продукта"
     )
-    image = models.ImageField(blank=True, null=True, upload_to='product', help_text="Изображение")
+    image = models.ImageField(
+        blank=True, null=True, upload_to="product", help_text="Изображение"
+    )
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)

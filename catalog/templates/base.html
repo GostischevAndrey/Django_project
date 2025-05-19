@@ -57,10 +57,10 @@
                     <h6 class="sidebar-title">Меню</h6>
                     <hr class="sidebar-divider">
                     <ul class="sidebar-menu">
-                        <li><a class="sidebar-link" href="/">Главная</a></li>
-                        <li><a class="sidebar-link" href="categories/">Категории</a></li>
+                        <li><a class="sidebar-link" href="{% url 'catalog:home' %}">Главная</a></li>
+                        <li><a class="sidebar-link" href="{% url 'blog:post_list' %}">Посты</a></li>
                         <li><a class="sidebar-link" href="catalog/">Заказы</a></li>
-                        <li><a class="sidebar-link" href="contacts/">Контакты</a></li>
+                        <li><a class="sidebar-link" href="{% url 'catalog:contacts' %}">Контакты</a></li>
                     </ul>
                 </nav>
             </aside>
