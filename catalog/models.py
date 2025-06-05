@@ -5,10 +5,9 @@ class Category(models.Model):
     name_category = models.CharField(
         max_length=150,
         verbose_name="Наименование категории",
-        help_text="Введите наименование категории",
     )
     descriptions = models.TextField(
-        verbose_name="Описание категории", help_text="Введите описание категории"
+        verbose_name="Описание категории",
     )
 
     class Meta:
@@ -23,16 +22,30 @@ class Product(models.Model):
     name = models.CharField(
         max_length=150,
         verbose_name="Наименование продукта",
-        help_text="Введите наименование продукта",
+        blank=True,
+        default='',
     )
     description = models.TextField(
-        verbose_name="Описание продукта", help_text="Введите описание продукта"
+        verbose_name="Описание продукта",
+        blank=True,
+        default='',
     )
     image = models.ImageField(
-        blank=True, null=True, upload_to="product", help_text="Изображение"
+        blank=True,
+        null=True,
+        upload_to="product",
     )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    price = models.IntegerField()
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        verbose_name="Категория"
+    )
+    price = models.IntegerField(
+        blank=True,
+        null=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

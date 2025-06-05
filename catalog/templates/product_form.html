@@ -3,7 +3,7 @@
 {% block title %} Форма публикации {% endblock %}
 {% block content %}
 <div class="container mb-3">
-  <h1 class="mb-4">Форма</h1>
+  <h1 class="mb-4">Добавить новый продукт</h1>
   <form method="post" enctype='multipart/form-data'>
     {% csrf_token %}
     {{ form.as_p }}

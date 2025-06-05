@@ -1,20 +1,50 @@
 {% extends 'base.html' %}
 {% load my_tags %}
+
 {% block title %}Главная{% endblock %}
+
 {% block content %}
 <div class="album py-5 bg-light">
     <div class="container">
+        <!-- Кнопка создания товара -->
+        <div class="mb-4 p-3 bg-white rounded">
+            <a href="{% url 'catalog:product_create' %}" class="btn btn-primary">Создать новый товар</a>
+        </div>
+
+        <!-- Список товаров -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             {% for product in products %}
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <img src="{{product.image | media_filter}}" class="card-img-top p-3" alt="{{product.name}}" style="height: 250px; object-fit: contain;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{product.name}}</h5>
-                        <p class="card-text flex-grow-1">{{product.description|truncatechars:100|default:"Описание отсутствует"}}</p>
-                        <a href="{% url 'catalog:product_info' product.pk %}" class="btn btn-primary">Полная информация</a>
-                        <a href="{% url 'catalog:product_update' product.pk %}" class="btn btn-sm btn-secondary ml-3">Редактировать</a>
-                        <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-sm btn-danger ml-1">Удалить</a>
+                    {% if product.image %}
+                    <img src="{{ product.image|media_filter }}"
+                         class="card-img-top p-3"
+                         alt="{{ product.name }}"
+                         style="height: 200px; object-fit: contain;">
+                    {% else %}
+                    <div class="text-center p-3 bg-light" style="height: 200px;">
+                        <span class="text-muted">Нет изображения</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">
+                            {{ product.description|truncatechars:100|default:"Описание отсутствует" }}
+                        </p>
+                    </div>
+
+                    <div class="card-footer bg-white">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'catalog:product_info' product.pk %}"
+                               class="btn btn-sm btn-outline-primary">Подробнее</a>
+                            <div>
+                                <a href="{% url 'catalog:product_update' product.pk %}"
+                                   class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                <a href="{% url 'catalog:product_delete' product.pk %}"
+                                   class="btn btn-sm btn-outline-danger">Удалить</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
