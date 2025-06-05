@@ -25,7 +25,6 @@ class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Общая стилизация для всех полей
         for field_name, field in self.fields.items():
             field.widget.attrs.update(
                 {
@@ -37,7 +36,6 @@ class ProductForm(forms.ModelForm):
             if field.required:
                 field.widget.attrs["required"] = "required"
 
-        # Специальная стилизация для отдельных полей
         self.fields["name"].widget.attrs.update(
             {"class": "form-control product-name-input", "autofocus": "autofocus"}
         )

@@ -6,14 +6,9 @@
 {% block content %}
 <div class="album py-5 bg-light">
     <div class="container">
-        <!-- Форма создания товара -->
+        <!-- Кнопка создания товара -->
         <div class="mb-4 p-3 bg-white rounded">
-            <h2>Создать новый товар</h2>
-            <form method="post" action="{% url 'catalog:product_create' %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Создать</button>
-            </form>
+            <a href="{% url 'catalog:product_create' %}" class="btn btn-primary">Создать новый товар</a>
         </div>
 
         <!-- Список товаров -->

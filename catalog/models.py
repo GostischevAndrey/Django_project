@@ -22,17 +22,30 @@ class Product(models.Model):
     name = models.CharField(
         max_length=150,
         verbose_name="Наименование продукта",
+        blank=True,
+        default='',
     )
     description = models.TextField(
         verbose_name="Описание продукта",
+        blank=True,
+        default='',
     )
     image = models.ImageField(
         blank=True,
         null=True,
         upload_to="product",
     )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    price = models.IntegerField()
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        verbose_name="Категория"
+    )
+    price = models.IntegerField(
+        blank=True,
+        null=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
