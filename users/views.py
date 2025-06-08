@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.conf import settings
 from .models import User
 from .forms import CustomUserCreationForm, CustomLoginForm
+from django.contrib.auth import login
 
 
 class RegisterView(CreateView):
@@ -23,8 +24,6 @@ class RegisterView(CreateView):
             recipient_list=[user.email],
             fail_silently=False,
         )
-
-        from django.contrib.auth import login
 
         login(self.request, user)
 
