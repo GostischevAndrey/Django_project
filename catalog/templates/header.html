@@ -11,16 +11,19 @@
                     <button type="button" class="btn btn-outline-light disabled">
                         <i class="bi bi-person-fill"></i> {{ user.username }}
                     </button>
-                    <a href="{% url 'users:logout' %}" class="btn btn-outline-light">
-                        <i class="bi bi-box-arrow-right"></i> Выйти
-                    </a>
+                    <form action="{% url 'users:logout' %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-light">
+                            <i class="bi bi-box-arrow-right"></i> Выйти
+                        </button>
+                    </form>
                 </div>
                 {% else %}
                 <a href="{% url 'users:login' %}" class="btn btn-outline-light">
                     <i class="bi bi-box-arrow-in-right"></i> Войти
                 </a>
                 <a href="{% url 'users:register' %}" class="btn btn-outline-light">
-                    <i class="bi bi-box-arrow-in-right"></i> Регистрация
+                    <i class="bi bi-person-plus"></i> Регистрация
                 </a>
                 {% endif %}
             </div>
