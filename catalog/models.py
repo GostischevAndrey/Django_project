@@ -23,12 +23,12 @@ class Product(models.Model):
         max_length=150,
         verbose_name="Наименование продукта",
         blank=True,
-        default='',
+        default="",
     )
     description = models.TextField(
         verbose_name="Описание продукта",
         blank=True,
-        default='',
+        default="",
     )
     image = models.ImageField(
         blank=True,
@@ -40,7 +40,7 @@ class Product(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        verbose_name="Категория"
+        verbose_name="Категория",
     )
     price = models.IntegerField(
         blank=True,
